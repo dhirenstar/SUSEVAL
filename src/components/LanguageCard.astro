@@ -1,0 +1,65 @@
+---
+interface Props {
+  name: string;
+  nativeName?: string;
+}
+
+const { name, nativeName } = Astro.props;
+---
+
+<article class="language-card">
+  <div class="language-card__icon" aria-hidden="true">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+      <path d="M8 16h16M16 8c-2.5 3-4 7-4 8s1.5 5 4 8M16 8c2.5 3 4 7 4 8s-1.5 5-4 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h3 class="language-card__name">{name}</h3>
+  {nativeName && <p class="language-card__native">{nativeName}</p>}
+  <p class="language-card__description">
+    <slot />
+  </p>
+</article>
+
+<style>
+  .language-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), border-color var(--transition);
+  }
+
+  .language-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-gold);
+  }
+
+  .language-card__icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+    color: var(--color-navy);
+  }
+
+  .language-card__name {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--text-xl);
+  }
+
+  .language-card__native {
+    margin: 0 0 var(--space-md);
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: var(--color-text-light);
+  }
+
+  .language-card__description {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,106 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <p class="footer__title">SUSEVAL</p>
+      <p class="footer__subtitle">Evaluating the System Usability Scale in Cape Town</p>
+    </div>
+
+    <div class="footer__details">
+      <p>
+        An Honours research project at the
+        <a href="https://www.uct.ac.za/" target="_blank" rel="noopener noreferrer">
+          University of Cape Town (UCT)
+        </a>.
+      </p>
+      <p class="footer__note">
+        This website provides general information about the research project.
+        Participation details will be updated as the study progresses.
+      </p>
+    </div>
+
+    <div class="footer__meta">
+      <p>&copy; {new Date().getFullYear()} SUSEVAL Research Project</p>
+      <p class="footer__placeholder">
+        Ethics approval reference: <span class="placeholder-badge">To be confirmed</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-navy-dark);
+    color: rgba(255, 255, 255, 0.85);
+    padding-block: var(--space-2xl);
+  }
+
+  .footer__inner {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 48rem) {
+    .footer__inner {
+      grid-template-columns: 1fr 1.5fr;
+      grid-template-rows: auto auto;
+    }
+
+    .footer__meta {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .footer__title {
+    margin: 0 0 var(--space-xs);
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+
+  .footer__subtitle {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .footer__details p {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  .footer a {
+    color: var(--color-gold-light);
+  }
+
+  .footer a:hover {
+    color: #fff;
+  }
+
+  .footer__note {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .footer__meta {
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .footer__meta p {
+    margin: 0 0 var(--space-xs);
+  }
+
+  .footer__placeholder {
+    margin-top: var(--space-sm);
+  }
+
+  .footer .placeholder-badge {
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+</style>

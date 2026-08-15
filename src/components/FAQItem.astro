@@ -1,0 +1,70 @@
+---
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<details class="faq-item">
+  <summary class="faq-item__question">{question}</summary>
+  <div class="faq-item__answer">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .faq-item + .faq-item {
+    margin-top: var(--space-sm);
+  }
+
+  .faq-item__question {
+    padding: var(--space-md) var(--space-lg);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-navy-dark);
+    cursor: pointer;
+    list-style: none;
+    transition: background-color var(--transition);
+  }
+
+  .faq-item__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__question::after {
+    content: "+";
+    float: right;
+    font-weight: 400;
+    color: var(--color-text-light);
+    transition: transform var(--transition);
+  }
+
+  .faq-item[open] .faq-item__question::after {
+    content: "−";
+  }
+
+  .faq-item__question:hover {
+    background: var(--color-bg-alt);
+  }
+
+  .faq-item__answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-item__answer :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

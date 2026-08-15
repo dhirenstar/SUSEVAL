@@ -1,0 +1,63 @@
+---
+interface Props {
+  name: string;
+  role: string;
+}
+
+const { name, role } = Astro.props;
+---
+
+<article class="team-card">
+  <div class="team-card__avatar" aria-hidden="true">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="18" r="8" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M10 42c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h3 class="team-card__name">{name}</h3>
+  <p class="team-card__role">{role}</p>
+  <div class="team-card__details">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .team-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .team-card__avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+    color: var(--color-navy-light);
+    opacity: 0.6;
+  }
+
+  .team-card__name {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--text-lg);
+  }
+
+  .team-card__role {
+    margin: 0 0 var(--space-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-gold);
+  }
+
+  .team-card__details {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .team-card__details :global(p) {
+    margin: 0 0 var(--space-xs);
+  }
+</style>

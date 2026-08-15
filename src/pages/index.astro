@@ -1,0 +1,530 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import LanguageCard from '../components/LanguageCard.astro';
+import Step from '../components/Step.astro';
+import TeamCard from '../components/TeamCard.astro';
+import FAQItem from '../components/FAQItem.astro';
+---
+
+<BaseLayout>
+  <Header />
+
+  <main id="main-content">
+    <!-- Home / Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__pattern" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">University of Cape Town · Honours Research Project</p>
+        <h1 id="hero-heading">SUSEVAL</h1>
+        <p class="hero__tagline">Evaluating the System Usability Scale in Cape Town</p>
+        <p class="hero__intro">
+          SUSEVAL is a research project investigating how the System Usability Scale (SUS)
+          performs when used across different language contexts in Cape Town — including
+          English, Afrikaans, and isiXhosa. The project aims to contribute to more inclusive
+          and culturally relevant usability measurement in South African research and design.
+        </p>
+        <div class="hero__actions">
+          <Button href="#about">Learn about the study</Button>
+          <Button href="#participate" variant="secondary">Who can participate?</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About the Study -->
+    <Section
+      id="about"
+      label="About the Study"
+      title="Understanding usability in a multilingual city"
+      description="SUSEVAL explores whether established usability measures work equally well across the diverse language communities of Cape Town."
+    >
+      <div class="content-grid content-grid--2">
+        <div class="card">
+          <h3>What is SUSEVAL?</h3>
+          <p>
+            SUSEVAL (Evaluating the System Usability Scale in Cape Town) is an Honours-level
+            research project at the University of Cape Town. It examines the System Usability
+            Scale — a widely used questionnaire for measuring perceived usability — in the
+            context of Cape Town's multilingual population.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Why usability measurement matters</h3>
+          <p>
+            Usability affects whether people can use digital tools, services, and interfaces
+            effectively and confidently. Reliable usability measures help researchers, designers,
+            and organisations understand user experience and improve the systems people rely on
+            every day.
+          </p>
+        </div>
+        <div class="card" style="grid-column: 1 / -1;">
+          <h3>Why multilingual usability research matters in Cape Town</h3>
+          <p>
+            Cape Town is home to speakers of many languages. When usability questionnaires are
+            available only in English, responses may not fully reflect the experiences of people
+            who think, read, or communicate primarily in other languages. SUSEVAL investigates
+            whether and how the SUS functions across English, Afrikaans, and isiXhosa — languages
+            that are widely spoken in the city — to support more inclusive usability research
+            in South Africa.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <!-- The System Usability Scale -->
+    <Section
+      id="sus"
+      label="The System Usability Scale"
+      title="A brief introduction to the SUS"
+      alt={true}
+    >
+      <div class="content-grid content-grid--2">
+        <div>
+          <h3>What is the SUS?</h3>
+          <p>
+            The System Usability Scale (SUS) is a standardised, ten-item questionnaire developed
+            by John Brooke in 1986. It asks participants to rate their agreement with statements
+            about a system they have used, producing a score between 0 and 100. The SUS is widely
+            used in academic research and industry because it is short, reliable, and applicable
+            to many types of systems.
+          </p>
+          <p>
+            A SUS score is not a percentage, but it provides a consistent way to compare
+            perceived usability across studies and systems.
+          </p>
+        </div>
+        <div>
+          <h3>What this study investigates</h3>
+          <p>
+            SUSEVAL examines how the SUS performs when administered in different language
+            contexts relevant to Cape Town. The study aims to explore questions such as:
+          </p>
+          <ul class="info-list">
+            <li>Whether SUS responses are comparable across English, Afrikaans, and isiXhosa</li>
+            <li>How language may influence participants' understanding of SUS items</li>
+            <li>What considerations arise when using the SUS in multilingual South African settings</li>
+          </ul>
+          <p>
+            <em>Specific research questions and methodology details will be published here once finalised.</em>
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <!-- Languages -->
+    <Section
+      id="languages"
+      label="Languages"
+      title="Research across three language contexts"
+      description="The study investigates the System Usability Scale in English, Afrikaans, and isiXhosa — reflecting languages commonly used in Cape Town."
+    >
+      <div class="content-grid content-grid--3">
+        <LanguageCard name="English">
+          English is widely used in education, business, and digital contexts in Cape Town.
+          The SUS was originally developed in English and is most commonly administered in
+          this language internationally.
+        </LanguageCard>
+        <LanguageCard name="Afrikaans">
+          Afrikaans is spoken by a significant portion of Cape Town's population. This study
+          explores how the SUS performs when presented in Afrikaans.
+        </LanguageCard>
+        <LanguageCard name="isiXhosa" nativeName="isiXhosa">
+          isiXhosa is one of South Africa's official languages and is widely spoken in the
+          Western Cape. Investigating the SUS in isiXhosa addresses an important gap in
+          multilingual usability research.
+        </LanguageCard>
+      </div>
+      <p class="languages-note">
+        By comparing SUS administration across these three languages, SUSEVAL aims to contribute
+        to understanding how language context affects usability measurement — and what this means
+        for research conducted in multilingual settings like Cape Town.
+      </p>
+    </Section>
+
+    <!-- How the Study Works -->
+    <Section
+      id="procedure"
+      label="How the Study Works"
+      title="What participation involves"
+      description="The following is a general overview. Specific procedural details will be updated once confirmed."
+      alt={true}
+    >
+      <div class="steps">
+        <Step number={1} title="Learn about the study">
+          <p>
+            Read the information on this website to understand what SUSEVAL is investigating
+            and whether you may be eligible to participate.
+          </p>
+        </Step>
+        <Step number={2} title="Confirm eligibility">
+          <p>
+            Check the eligibility criteria in the section below. If you are unsure whether you
+            qualify, please contact the research team.
+          </p>
+        </Step>
+        <Step number={3} title="Take part in the study">
+          <p>
+            <span class="placeholder-badge">Details to be confirmed</span>
+          </p>
+          <p>
+            Participants will be asked to complete the System Usability Scale in one of the
+            study languages. Further details about session length, format (in-person or online),
+            and any additional tasks will be provided here once finalised.
+          </p>
+        </Step>
+        <Step number={4} title="Your data is handled responsibly">
+          <p>
+            <span class="placeholder-badge">Details to be confirmed</span>
+          </p>
+          <p>
+            Information about how your data will be collected, stored, and used will be provided
+            in the participant information sheet and consent form. Ethics approval details will
+            also be published on this website.
+          </p>
+        </Step>
+      </div>
+    </Section>
+
+    <!-- Who Can Participate -->
+    <Section
+      id="participate"
+      label="Who Can Participate"
+      title="Eligibility criteria"
+      description="The following criteria are placeholders and will be updated with confirmed eligibility requirements."
+    >
+      <div class="eligibility">
+        <div class="card eligibility__card">
+          <h3>Inclusion criteria</h3>
+          <ul>
+            <li><span class="placeholder-badge">Criterion to be confirmed</span></li>
+            <li><span class="placeholder-badge">Criterion to be confirmed</span></li>
+            <li><span class="placeholder-badge">Criterion to be confirmed</span></li>
+          </ul>
+          <p class="eligibility__note">
+            Confirmed inclusion criteria — such as age, language proficiency, or residency
+            requirements — will be listed here once approved.
+          </p>
+        </div>
+        <div class="card eligibility__card">
+          <h3>Exclusion criteria</h3>
+          <ul>
+            <li><span class="placeholder-badge">Criterion to be confirmed</span></li>
+            <li><span class="placeholder-badge">Criterion to be confirmed</span></li>
+          </ul>
+          <p class="eligibility__note">
+            Any exclusion criteria will be clearly stated here before recruitment begins.
+          </p>
+        </div>
+      </div>
+      <p class="participate-cta">
+        Interested in participating? Please see the <a href="#contact">Contact</a> section
+        for how to reach the research team once recruitment opens.
+      </p>
+    </Section>
+
+    <!-- Research Team -->
+    <Section
+      id="team"
+      label="Research Team"
+      title="Meet the researchers"
+      description="Research team information will be updated with confirmed names and affiliations."
+      alt={true}
+    >
+      <div class="content-grid content-grid--2">
+        <TeamCard name="[Researcher name]" role="Principal Researcher">
+          <p>Honours student, University of Cape Town</p>
+          <p><span class="placeholder-badge">Department to be confirmed</span></p>
+        </TeamCard>
+        <TeamCard name="[Supervisor name]" role="Research Supervisor">
+          <p>University of Cape Town</p>
+          <p><span class="placeholder-badge">Department to be confirmed</span></p>
+        </TeamCard>
+      </div>
+    </Section>
+
+    <!-- FAQ -->
+    <Section
+      id="faq"
+      label="Frequently Asked Questions"
+      title="Common questions"
+    >
+      <FAQItem question="What is the System Usability Scale (SUS)?">
+        <p>
+          The SUS is a ten-item questionnaire used to measure how usable people find a system
+          or interface. It produces a score that researchers and designers can use to compare
+          usability across different systems or studies. You can read more in
+          <a href="#sus">The System Usability Scale</a> section above.
+        </p>
+      </FAQItem>
+      <FAQItem question="Do I need technical expertise to participate?">
+        <p>
+          <span class="placeholder-badge">Answer to be confirmed</span>
+        </p>
+        <p>
+          Eligibility requirements regarding technical experience or familiarity with digital
+          systems will be stated in the confirmed participant information once available.
+        </p>
+      </FAQItem>
+      <FAQItem question="Which languages can I participate in?">
+        <p>
+          This study investigates the SUS in English, Afrikaans, and isiXhosa. Specific
+          details about which language you would complete the questionnaire in, and any
+          language proficiency requirements, will be confirmed before recruitment begins.
+        </p>
+      </FAQItem>
+      <FAQItem question="How long does participation take?">
+        <p>
+          <span class="placeholder-badge">Answer to be confirmed</span>
+        </p>
+        <p>
+          The expected duration of participation will be published here once the study
+          procedure is finalised.
+        </p>
+      </FAQItem>
+      <FAQItem question="Will my responses be kept confidential?">
+        <p>
+          <span class="placeholder-badge">Answer to be confirmed</span>
+        </p>
+        <p>
+          Details about data confidentiality, anonymisation, and storage will be provided in
+          the participant information sheet and consent form, and summarised on this website
+          before recruitment opens.
+        </p>
+      </FAQItem>
+      <FAQItem question="Has this study received ethics approval?">
+        <p>
+          <span class="placeholder-badge">Ethics reference to be confirmed</span>
+        </p>
+        <p>
+          Ethics approval information from the University of Cape Town will be published here
+          once obtained.
+        </p>
+      </FAQItem>
+      <FAQItem question="How do I sign up to participate?">
+        <p>
+          <span class="placeholder-badge">Recruitment details to be confirmed</span>
+        </p>
+        <p>
+          Instructions for expressing interest or registering as a participant will be added
+          to this website and the <a href="#contact">Contact</a> section when recruitment
+          begins.
+        </p>
+      </FAQItem>
+    </Section>
+
+    <!-- Contact -->
+    <Section
+      id="contact"
+      label="Contact"
+      title="Get in touch"
+      description="Use the details below to contact the research team. Contact information will be updated before recruitment begins."
+      alt={true}
+    >
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <h3>Research enquiries</h3>
+          <dl class="contact-list">
+            <div>
+              <dt>Email</dt>
+              <dd><span class="placeholder-badge">Email to be confirmed</span></dd>
+            </div>
+            <div>
+              <dt>Institution</dt>
+              <dd>University of Cape Town</dd>
+            </div>
+            <div>
+              <dt>Department</dt>
+              <dd><span class="placeholder-badge">Department to be confirmed</span></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="card contact-card">
+          <h3>Before you contact us</h3>
+          <p>
+            If you are interested in participating, please review the
+            <a href="#participate">eligibility criteria</a> and
+            <a href="#faq">frequently asked questions</a> first. Many common questions
+            are answered there.
+          </p>
+          <p>
+            For ethics-related enquiries, please include the ethics reference number once
+            it has been assigned.
+          </p>
+        </div>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    padding-block: var(--space-4xl) var(--space-3xl);
+    background: linear-gradient(160deg, var(--color-navy-dark) 0%, var(--color-navy) 55%, var(--color-navy-light) 100%);
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(184, 149, 74, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    max-width: 42rem;
+  }
+
+  .hero__eyebrow {
+    margin: 0 0 var(--space-md);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+  }
+
+  .hero h1 {
+    margin: 0 0 var(--space-sm);
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.06em;
+  }
+
+  .hero__tagline {
+    margin: 0 0 var(--space-lg);
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+  }
+
+  .hero__intro {
+    margin: 0 0 var(--space-xl);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .hero__actions :global(.btn--primary) {
+    background: var(--color-gold);
+    color: var(--color-navy-dark);
+  }
+
+  .hero__actions :global(.btn--primary:hover) {
+    background: var(--color-gold-light);
+    color: var(--color-navy-dark);
+  }
+
+  .hero__actions :global(.btn--secondary) {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+  }
+
+  .hero__actions :global(.btn--secondary:hover) {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #fff;
+    color: #fff;
+  }
+
+  /* Languages note */
+  .languages-note {
+    margin-top: var(--space-xl);
+    max-width: 42rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    max-width: 40rem;
+  }
+
+  /* Eligibility */
+  .eligibility {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 48rem) {
+    .eligibility {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .eligibility__note {
+    margin-top: var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+
+  .participate-cta {
+    margin-top: var(--space-xl);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 48rem) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .contact-list {
+    margin: 0;
+  }
+
+  .contact-list div + div {
+    margin-top: var(--space-md);
+  }
+
+  .contact-list dt {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-xs);
+  }
+
+  .contact-list dd {
+    margin: 0;
+    font-size: var(--text-base);
+    color: var(--color-text);
+  }
+
+  .contact-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+</style>
