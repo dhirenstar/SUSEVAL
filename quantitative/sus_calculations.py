@@ -13,12 +13,6 @@ LIKERT_SCORES = {
     'Stem sterk saam': 4,
 }
 
-# Each language contains three blocks of one system column and ten item columns.
-LANGUAGE_BLOCKS = {
-    'english': 7,
-    'afrikaans': 40,
-}
-
 SYSTEM_NAME_TRANSLATIONS = {
     'Verkooppuntmasjien (b.v.b. Yoco)': 'POS Machine',
 }
@@ -35,15 +29,15 @@ def calculate_sus_score(item_scores):
 
 def build_scored_data(
     data,
-    participant_numbers,
+    participant_ids,
     normalize_phone,
-    language_blocks=LANGUAGE_BLOCKS,
+    language_blocks,
 ):
     scored_rows = []
 
     for _, participant in data.iterrows():
         phone_key = normalize_phone(participant.iloc[PHONE_COLUMN])
-        participant_number = participant_numbers.get(phone_key, '')
+        participant_id = participant_ids.get(phone_key, '')
         for language, first_system_column in language_blocks.items():
             for system_number in range(3):
                 system_column = first_system_column + system_number * 11
@@ -58,7 +52,8 @@ def build_scored_data(
                     for item_number in range(1, 11)
                 ]
                 scored_rows.append({
-                    'participant_number': participant_number,
+                    'participant_id': participant_id,
+                    'phone_number': phone_key,
                     'system': system,
                     'language': language,
                     **{

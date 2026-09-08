@@ -15,12 +15,15 @@ CHANGE_LOG_COLUMNS = [
 
 def normalize_phone(phone):
     phone = str(phone).strip()
-    if not phone or '/' in phone:
+    if not phone:
         return ''
 
+    phone = phone.split('/')[0].strip()
     digits = re.sub(r'\D', '', phone)
     if digits.startswith('27') and len(digits) == 11:
         digits = '0' + digits[2:]
+    elif len(digits) == 9 and digits[0] in '678':
+        digits = '0' + digits
 
     return digits if len(digits) == 10 and digits.startswith('0') else ''
 
@@ -90,9 +93,9 @@ def clean_participant_tracker(tracker):
 
 
 def build_participant_lookup(clean_tracker):
-    participant_numbers = {}
+    participant_ids = {}
     for _, participant in clean_tracker.iterrows():
         phone_key = normalize_phone(participant['Phone no.'])
-        if phone_key and phone_key not in participant_numbers:
-            participant_numbers[phone_key] = participant['Participant number']
-    return participant_numbers
+        if phone_key and phone_key not in participant_ids:
+            participant_ids[phone_key] = participant['Participant ID']
+    return participant_ids
