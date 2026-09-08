@@ -16,6 +16,8 @@ class SurveySource:
     name: str
     phone_column: int
     blocks: tuple[SurveyBlock, ...]
+    delimiter: str = ','
+    system_header_keywords: tuple[str, ...] = ('system', 'stelsel', 'inkqubo')
 
     def validate_columns(self, columns):
         for block in self.blocks:
@@ -25,7 +27,7 @@ class SurveySource:
                     f'{self.name}: block at column {block.system_column} does not contain 10 item columns'
                 )
             header = str(columns[block.system_column]).lower()
-            if 'system' not in header and 'stelsel' not in header:
+            if not any(keyword in header for keyword in self.system_header_keywords):
                 raise ValueError(
                     f'{self.name}: expected a system selector at column {block.system_column}, got {columns[block.system_column]!r}'
                 )
@@ -59,5 +61,17 @@ SURVEY_SOURCES = (
         name='SUS_en',
         phone_column=6,
         blocks=(SurveyBlock('english', 7, 1, 1), SurveyBlock('english', 18, 2, 1), SurveyBlock('english', 29, 3, 1)),
+    ),
+    SurveySource(
+        filename='./data/SUS_xh.csv',
+        encoding='utf-8-sig',
+        name='SUS_xh',
+        phone_column=6,
+        blocks=(
+            SurveyBlock('isiXhosa', 7, 1, 1),
+            SurveyBlock('isiXhosa', 18, 2, 1),
+            SurveyBlock('isiXhosa', 29, 3, 1),
+        ),
+        delimiter=';',
     ),
 )

@@ -14,6 +14,12 @@ LIKERT_SCORES = {
     'Neutraal': 3,
     'Stem saam': 4,
     'Stem sterk saam': 5,
+    'Ndiyavumelani kakhulu (Strongly Disagree)': 1,
+    'Andivumelani kakhulu (Strongly Disagree)': 1,
+    'Andivumelani (Disagree)': 2,
+    'Andinangcamango / Ndiphakathi (Neutral)': 3,
+    'Ndiyavumelana (Agree)': 4,
+    'Ndiyavumelana kakhulu (Strongly Agree)': 5,
 }
 
 SYSTEM_NAME_TRANSLATIONS = {

@@ -51,6 +51,7 @@ def main():
             dtype=str,
             keep_default_na=False,
             encoding=source.encoding,
+            sep=source.delimiter,
         )
         scored_frames.append(build_scored_data(
             data, participant_ids, normalize_phone_detail, source, participant_metadata,

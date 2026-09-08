@@ -50,6 +50,22 @@ class PipelineRegressionTests(unittest.TestCase):
         self.assertTrue(((scores >= 0) & (scores <= 100)).all())
         self.assertTrue(((scores * 2 % 5).round(8) == 0).all())
 
+    def test_isixhosa_source_is_parsed_and_scored(self):
+        source = next(source for source in SURVEY_SOURCES if source.name == 'SUS_xh')
+        data = pd.read_csv(
+            source.filename,
+            dtype=str,
+            keep_default_na=False,
+            encoding=source.encoding,
+            sep=source.delimiter,
+        )
+        scored = build_scored_data(data, {}, normalize_phone_detail, source)
+        self.assertEqual(len(data), 34)
+        self.assertEqual(len(scored), 102)
+        self.assertTrue((scored['language'] == 'isiXhosa').all())
+        self.assertTrue((scored['processing_status'] == 'valid').all())
+        self.assertTrue((pd.to_numeric(scored['sus_score']) >= 0).all())
+
 
 if __name__ == '__main__':
     unittest.main()
