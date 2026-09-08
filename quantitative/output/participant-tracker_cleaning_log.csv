@@ -1,0 +1,22 @@
+row,participant_id,column,old_value,new_value,reason
+2,P080,Phone no.,083 778 5363 ,0837785363,Normalized phone number for matching
+5,P077,,P077,,Removed row explicitly marked as a duplicate
+13,P069,Phone no.,063 689 3287 ,0636893287,Normalized phone number for matching
+18,P064,Phone no.,084 680 5572,0846805572,Normalized phone number for matching
+31,P050,Phone no.,Bandezi,,Cleared invalid phone number; cannot match safely
+36,P045,Phone no.,081312 9216,0813129216,Normalized phone number for matching
+54,P027,Phone no.,‪+27 81 715 0529‬,0817150529,Normalized phone number for matching
+59,P020,Phone no.,072 859 7437 ,0728597437,Normalized phone number for matching
+60,P019,Participant number,,019,Filled from Participant ID
+62,P017,Phone no.,076 050 7414 ,0760507414,Normalized phone number for matching
+64,P015,Participant number,,015,Filled from Participant ID
+64,P015,Phone no.,0658299073/0833255049,,Cleared invalid phone number; cannot match safely
+65,P014,Participant number,,014,Filled from Participant ID
+67,P012,Participant number,,012,Filled from Participant ID
+68,P011,Participant number,,011,Filled from Participant ID
+70,P009,Participant number,,009,Filled from Participant ID
+71,P008,Participant number,,008,Filled from Participant ID
+72,P007,Participant number,,007,Filled from Participant ID
+73,P006,Participant number,,006,Filled from Participant ID
+77,P002,Participant number,,002,Filled from Participant ID
+79,,,,,Removed blank row
