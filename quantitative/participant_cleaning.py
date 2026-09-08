@@ -1,4 +1,5 @@
 import re
+from collections import defaultdict
 
 import pandas as pd
 
@@ -13,19 +14,51 @@ CHANGE_LOG_COLUMNS = [
 ]
 
 
-def normalize_phone(phone):
-    phone = str(phone).strip()
-    if not phone:
-        return ''
+def normalize_phone_detail(phone):
+    """Return deterministic phone normalization without discarding ambiguity."""
+    original = '' if phone is None else str(phone).strip()
+    if not original:
+        return {
+            'original_phone': '',
+            'normalized_phone': '',
+            'status': 'missing',
+            'candidates': '',
+        }
 
-    phone = phone.split('/')[0].strip()
+    parts = [part.strip() for part in re.split(r'[/;,]|\bor\b|\n', original, flags=re.I)]
+    parts = [part for part in parts if part]
+    if len(parts) != 1:
+        candidates = sorted({_normalize_single_phone(part) for part in parts})
+        candidates = [candidate for candidate in candidates if candidate]
+        return {
+            'original_phone': original,
+            'normalized_phone': '',
+            'status': 'ambiguous_multiple_numbers',
+            'candidates': ';'.join(candidates),
+        }
+
+    normalized = _normalize_single_phone(parts[0])
+    return {
+        'original_phone': original,
+        'normalized_phone': normalized,
+        'status': 'valid' if normalized else 'invalid',
+        'candidates': normalized,
+    }
+
+
+def _normalize_single_phone(phone):
     digits = re.sub(r'\D', '', phone)
     if digits.startswith('27') and len(digits) == 11:
         digits = '0' + digits[2:]
     elif len(digits) == 9 and digits[0] in '678':
         digits = '0' + digits
+    if len(digits) == 10 and re.fullmatch(r'0[6-8]\d{8}', digits):
+        return digits
+    return ''
 
-    return digits if len(digits) == 10 and digits.startswith('0') else ''
+
+def normalize_phone(phone):
+    return normalize_phone_detail(phone)['normalized_phone']
 
 
 def clean_participant_tracker(tracker):
@@ -46,17 +79,6 @@ def clean_participant_tracker(tracker):
 
         participant_id = str(row['Participant ID']).strip()
         notes = str(row['Notes']).strip().lower()
-        if 'duplicate entry' in notes:
-            changes.append({
-                'row': row_number,
-                'participant_id': participant_id,
-                'column': '',
-                'old_value': participant_id,
-                'new_value': '',
-                'reason': 'Removed row explicitly marked as a duplicate',
-            })
-            continue
-
         participant_number = str(row['Participant number']).strip()
         if not participant_number and re.fullmatch(r'P\d+', participant_id):
             participant_number = participant_id[1:]
@@ -70,7 +92,8 @@ def clean_participant_tracker(tracker):
             })
 
         original_phone = str(row['Phone no.'])
-        clean_phone = normalize_phone(original_phone)
+        phone_detail = normalize_phone_detail(original_phone)
+        clean_phone = phone_detail['normalized_phone']
         if clean_phone != original_phone.strip():
             changes.append({
                 'row': row_number,
@@ -80,8 +103,25 @@ def clean_participant_tracker(tracker):
                 'new_value': clean_phone,
                 'reason': 'Normalized phone number for matching',
             })
-        if original_phone.strip() and not clean_phone:
-            changes[-1]['reason'] = 'Cleared invalid phone number; cannot match safely'
+        if original_phone.strip() and phone_detail['status'] != 'valid':
+            changes.append({
+                'row': row_number,
+                'participant_id': participant_id,
+                'column': 'Phone no.',
+                'old_value': original_phone,
+                'new_value': clean_phone,
+                'reason': f"{phone_detail['status']}; cannot match safely",
+            })
+
+        if 'duplicate entry' in notes:
+            changes.append({
+                'row': row_number,
+                'participant_id': participant_id,
+                'column': 'Notes',
+                'old_value': str(row['Notes']),
+                'new_value': str(row['Notes']),
+                'reason': 'Retained tracker row marked as duplicate for audit; linkage remains subject to ambiguity checks',
+            })
 
         row['Participant ID'] = participant_id
         row['Participant number'] = participant_number
@@ -93,9 +133,24 @@ def clean_participant_tracker(tracker):
 
 
 def build_participant_lookup(clean_tracker):
-    participant_ids = {}
+    participant_ids = defaultdict(list)
     for _, participant in clean_tracker.iterrows():
         phone_key = normalize_phone(participant['Phone no.'])
-        if phone_key and phone_key not in participant_ids:
-            participant_ids[phone_key] = participant['Participant ID']
-    return participant_ids
+        if phone_key and participant['Participant ID'] not in participant_ids[phone_key]:
+            participant_ids[phone_key].append(participant['Participant ID'])
+    return dict(participant_ids)
+
+
+def duplicate_phone_mappings(clean_tracker):
+    duplicates = []
+    grouped = clean_tracker.copy()
+    grouped['normalized_phone'] = grouped['Phone no.'].map(normalize_phone)
+    for phone, rows in grouped[grouped['normalized_phone'].ne('')].groupby('normalized_phone'):
+        participant_ids = sorted(rows['Participant ID'].astype(str).unique())
+        if len(participant_ids) > 1:
+            duplicates.append({
+                'normalized_phone': phone,
+                'participant_ids': ';'.join(participant_ids),
+                'status': 'ambiguous_duplicate_phone_mapping',
+            })
+    return duplicates

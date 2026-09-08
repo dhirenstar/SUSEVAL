@@ -2,6 +2,7 @@ Participant ID,Participant number,Phone no.,First Language(s),English Proficienc
 P080,80,0837785363,"[""isiXhosa""]",Fluent,Experiment C (Written isiXhosa),"[""UCT Student""]",English,Yes,In progress,9/8/2026,Pending stage 1,Yes,,No,
 P079,79,0837719620,"[""English""]",Native,Experiment A (Oral English),"[""UCT Student""]",English,Yes,In progress,,Pending stage 1,Yes,,No,
 P078,78,0714028930,"[""English""]",Native,Experiment A (Oral English),"[""UCT Student""]",English,Yes,Completed,9/7/2026,Ready to start,Yes,,No,
+P077,77,0680055906,"[""Afrikaans""]",Conversational,Experiment B (Written Afrikaans),"[""Unemployed""]",English,Yes,Not started,,Pending stage 1,Yes,,No,Duplicate entry; Already completed.
 P076,76,0612956719,"[""English""]",Fluent,Experiment A (Oral English),"[""Self employed ""]",English,Yes,In progress,,Pending stage 1,Yes,,No,
 P075,75,0823565527,"[""isiXhosa""]",Ndiyakwazi kakuhle  ,Experiment C (Written isiXhosa),"[""Umfundi wase-UCT"",""Ndiqeshiwe""]",IsiXhosa,Yes,Completed,9/5/2026,Completed,Yes,,No,
 P074,74,0837840895,"[""Afrikaans"",""Engels""]",Vlot,Experiment B (Written Afrikaans),"[""UCT Student""]",Afrikaans,Yes,Not started,,Pending stage 1,Yes,,No,
@@ -61,7 +62,7 @@ P019,019,0620110130,"English, Afrikaans (Basic)",Native,Experiment A (Oral Engli
 P018,18,0711485107,isiXhosa,Native,Experiment C (Written isiXhosa),Employed,English,Yes,Completed,8/31/2026,Completed,Yes,N/A,No,12 entries instead of 6 lmaooo
 P017,17,0760507414,"isiXhosa, English",Fully fluent,Experiment C (Written isiXhosa),UCT Student,English,Yes,Completed,8/24/2026,Completed,Yes,N/A,No,
 P016,16,0813182353,"English, Afrikaans",Native,Experiment B (Written Afrikaans),Other Student,English,Yes,Completed,,Completed,Yes,Not started,,
-P015,015,0658299073,English,Native,Experiment A (Oral English),Other Student,,Yes,Completed,,Completed,Yes,Completed,,
+P015,015,,English,Native,Experiment A (Oral English),Other Student,,Yes,Completed,,Completed,Yes,Completed,,
 P014,014,0661238960,"English, isiXhosa (Conversational)",Fully fluent,Experiment A (Oral English),Other Student,,Yes,Completed,,Completed,Yes,Completed,,
 P013,13,0633195454,"isiXhosa, English",Fully fluent,Experiment C (Written isiXhosa),UCT Staff,English,Yes,Completed,8/23/2026,Completed,Yes,Completed,No,"""Fixed"""
 P012,012,0618974466,English,Native,Experiment A (Oral English),Other Student,,Yes,Completed,8/24/2026,Completed,Yes,Completed,,
