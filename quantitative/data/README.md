@@ -5,4 +5,6 @@ Download the following files from the sources and move them to this folder. Ensu
 4. `SUS_en-af.csv`: Go to the English + Afrikaans SUS form, open the corresponding excel sheet, and Export As CSV UTF-8.
 5. `SUS_af.csv`: Go to the Afrikaans SUS form, open the corresponding excel sheet, and Export As CSV UTF-8.
 
+Alternatively, download all the files from the SUSEVAL OneDrive -> Form data, but note that this data may be outdated.
+
 This is the raw data that will be processed to produce the various outputs. The contents of this folder are not tracked as they contain sensitive participant data.
