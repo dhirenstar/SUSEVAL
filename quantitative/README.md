@@ -71,7 +71,7 @@ Configured sources are:
 - `SUS_en-af.csv`: English and Afrikaans blocks in one file.
 - `SUS_af.csv`: Afrikaans blocks.
 - `SUS_en.csv`: English blocks.
-- `SUS_xh.csv`: isiXhosa blocks, using a semicolon delimiter and UTF-8 BOM.
+- `SUS_xh.csv`: isiXhosa blocks.
 
 ### `participant_cleaning.py`
 

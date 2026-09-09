@@ -128,6 +128,7 @@ class PipelineRegressionTests(unittest.TestCase):
 
     def test_isixhosa_source_is_parsed_and_scored(self):
         source = next(source for source in SURVEY_SOURCES if source.name == 'SUS_xh')
+        self.assertEqual(source.delimiter, ',')
         data = pd.read_csv(
             source.filename,
             dtype=str,

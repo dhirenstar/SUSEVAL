@@ -50,7 +50,7 @@ SURVEY_SOURCES = (
     ),
     SurveySource(
         filename='./data/SUS_af.csv',
-        encoding='latin-1',
+        encoding='utf-8',
         name='SUS_af',
         phone_column=6,
         blocks=(SurveyBlock('afrikaans', 7, 1, 1), SurveyBlock('afrikaans', 18, 2, 1), SurveyBlock('afrikaans', 29, 3, 1)),
@@ -64,7 +64,7 @@ SURVEY_SOURCES = (
     ),
     SurveySource(
         filename='./data/SUS_xh.csv',
-        encoding='utf-8-sig',
+        encoding='utf-8',
         name='SUS_xh',
         phone_column=6,
         blocks=(
@@ -72,6 +72,6 @@ SURVEY_SOURCES = (
             SurveyBlock('isiXhosa', 18, 2, 1),
             SurveyBlock('isiXhosa', 29, 3, 1),
         ),
-        delimiter=';',
+        delimiter=',',
     ),
 )
