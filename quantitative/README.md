@@ -29,7 +29,7 @@ quantitative/
 
 ### `main.py`
 
-Entry point for the complete pipeline. It:
+Entry point for the interactive CLI and complete pipeline. It:
 
 1. Reads and cleans `data/participant-tracker.csv`.
 2. Builds a participant lookup from normalized phone numbers.
@@ -44,6 +44,20 @@ Run it from this folder with:
 ```powershell
 python main.py
 ```
+
+The menu provides these operations:
+
+1. Process all data
+2. Generate a filtered participant-group dataset
+3. View the data summary
+4. View data-quality issues
+5. Run validation checks
+6. Run the regression tests
+7. Exit
+
+The CLI is a thin interface over the existing processing functions. Processing
+regenerates the known derived files in `output/`; it does not ask for a
+confirmation because those files are reproducible pipeline outputs.
 
 ### `survey_sources.py`
 
@@ -136,6 +150,21 @@ Running `main.py` creates or updates these files in `output/`:
 - `linkage_diagnostics_sensitive.csv`: phone-based linkage diagnostics,
 	including original and normalized phone values. Treat this file as
 	sensitive and do not distribute with general analysis outputs.
+- `groups/SUS_afrikaans.csv`: evaluations for participants in
+	`Experiment B (Written Afrikaans)`.
+- `groups/SUS_isixhosa.csv`: evaluations for participants in
+	`Experiment C (Written isiXhosa)`.
+- `groups/SUS_oral.csv`: evaluations for participants in
+	`Experiment A (Oral English)`.
+- `groups/SUS_all.csv`: optional copy of the complete analysis dataset.
+
+Group files are subsets of `SUS_scored.csv`. Filtering uses the participant
+tracker's `Condition Group` metadata, carried into the scored data as
+`condition_group`; it does not filter by the evaluation's `language` column.
+This means, for example, that an Afrikaans-group participant's English
+evaluation is included in the Afrikaans participant-group file. Group files
+exclude phone values and linkage candidates and are intended for normal
+analysis use.
 
 The `output/` directory is generated data. Re-running the pipeline overwrites
 these files with results based on the current inputs.
@@ -153,3 +182,13 @@ these files with results based on the current inputs.
 - The analysis treats rows as evaluations, not independent participants.
 	Language and system are retained as grouping variables; the pipeline does
 	not establish a causal language effect or a matched system set.
+
+## Virtual environment commands
+
+From the repository root, use the virtual environment in this folder:
+
+```powershell
+cd quantitative
+.\.venv\Scripts\python.exe main.py
+.\.venv\Scripts\python.exe -m unittest test_pipeline.py
+```

@@ -1,7 +1,11 @@
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 import pandas as pd
 
+from main import MENU_OPTIONS, generate_group_dataset
 from participant_cleaning import normalize_phone, normalize_phone_detail
 from survey_sources import SURVEY_SOURCES
 from sus_calculations import calculate_sus_score, build_scored_data
@@ -9,6 +13,78 @@ from validation import validate_scored_data
 
 
 class PipelineRegressionTests(unittest.TestCase):
+    def test_cli_exposes_expected_operations(self):
+        self.assertEqual(len(MENU_OPTIONS), 7)
+        self.assertEqual(MENU_OPTIONS[0], 'Process all data')
+        self.assertEqual(MENU_OPTIONS[-1], 'Exit')
+
+    def test_group_filter_uses_condition_group_not_response_language(self):
+        scored = pd.DataFrame([
+            {
+                'participant_id': 'P001',
+                'condition_group': 'Experiment B (Written Afrikaans)',
+                'language': 'english',
+                'linkage_candidate': '',
+                'sus_score': '80',
+            },
+            {
+                'participant_id': 'P002',
+                'condition_group': 'Experiment A (Oral English)',
+                'language': 'afrikaans',
+                'linkage_candidate': '',
+                'sus_score': '70',
+            },
+        ])
+        original = scored.copy(deep=True)
+        with TemporaryDirectory() as temporary_directory, patch(
+            'main.GROUPS_DIR', Path(temporary_directory),
+        ):
+            _, output_path, filtered = generate_group_dataset(scored, 'afrikaans')
+
+        self.assertEqual(output_path.name, 'SUS_afrikaans.csv')
+        self.assertEqual(filtered['participant_id'].tolist(), ['P001'])
+        self.assertEqual(filtered['language'].tolist(), ['english'])
+        self.assertNotIn('linkage_candidate', filtered.columns)
+        self.assertTrue(scored.equals(original))
+
+    def test_all_group_filters_use_participant_condition_metadata(self):
+        scored = pd.DataFrame([
+            {'participant_id': 'P001', 'condition_group': 'Experiment B (Written Afrikaans)', 'language': 'english'},
+            {'participant_id': 'P002', 'condition_group': 'Experiment C (Written isiXhosa)', 'language': 'english'},
+            {'participant_id': 'P003', 'condition_group': 'Experiment A (Oral English)', 'language': 'afrikaans'},
+        ])
+        expected = {
+            'afrikaans': ['P001'],
+            'isixhosa': ['P002'],
+            'oral': ['P003'],
+        }
+        with TemporaryDirectory() as temporary_directory, patch(
+            'main.GROUPS_DIR', Path(temporary_directory),
+        ):
+            for group_key, participant_ids in expected.items():
+                _, _, filtered = generate_group_dataset(scored, group_key)
+                self.assertEqual(filtered['participant_id'].tolist(), participant_ids)
+
+    def test_filtered_dataset_excludes_sensitive_columns(self):
+        scored = pd.DataFrame([
+            {
+                'participant_id': 'P001',
+                'condition_group': 'Experiment C (Written isiXhosa)',
+                'linkage_candidate': 'P002',
+                'original_phone': '0790000000',
+            },
+        ])
+        with TemporaryDirectory() as temporary_directory, patch(
+            'main.GROUPS_DIR', Path(temporary_directory),
+        ):
+            _, output_path, filtered = generate_group_dataset(scored, 'isixhosa')
+            written = pd.read_csv(output_path, dtype=str, keep_default_na=False)
+
+        self.assertNotIn('linkage_candidate', filtered.columns)
+        self.assertNotIn('original_phone', filtered.columns)
+        self.assertNotIn('linkage_candidate', written.columns)
+        self.assertNotIn('original_phone', written.columns)
+
     def test_known_sus_scores(self):
         self.assertEqual(calculate_sus_score([5, 1, 5, 1, 5, 1, 5, 1, 5, 1]), 100.0)
         self.assertEqual(calculate_sus_score([3] * 10), 50.0)
