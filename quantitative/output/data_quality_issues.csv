@@ -1,8 +1,0 @@
-issue_type,detail,count
-linkage,unmatched,12
-linkage,unmatched_invalid,12
-linkage,ambiguous_duplicate_phone,6
-linkage,ambiguous_duplicate_phone_mapping: P073;P077,1
-duplicate_evaluation,P018 / english / ATM,2
-duplicate_evaluation,P055 / english / Uber,2
-duplicate_evaluation,P065 / english / ATM,2
