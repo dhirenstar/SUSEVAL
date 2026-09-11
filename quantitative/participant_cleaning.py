@@ -13,6 +13,25 @@ CHANGE_LOG_COLUMNS = [
     'reason',
 ]
 
+ENGLISH_PROFICIENCY_BANDS = {'Basic', 'Conversational', 'Fluent', 'Native'}
+ENGLISH_PROFICIENCY_TRANSLATIONS = {
+    'Ndiyakwazi kakuhle': 'Fluent',
+    'Ndiyakwazi ukuthetha': 'Conversational',
+    'Vlot': 'Fluent',
+    'Moedertaal': 'Native',
+    'Lulwimi lwam lokuqala': 'Native',
+    'Fully fluent': 'Fluent',
+}
+
+
+def normalize_english_proficiency(value):
+    normalized = ' '.join(str(value).strip().split())
+    if not normalized:
+        return ''
+    if normalized in ENGLISH_PROFICIENCY_BANDS:
+        return normalized
+    return ENGLISH_PROFICIENCY_TRANSLATIONS.get(normalized, '')
+
 
 def normalize_phone_detail(phone):
     """Return deterministic phone normalization without discarding ambiguity."""
@@ -126,6 +145,18 @@ def clean_participant_tracker(tracker):
         row['Participant ID'] = participant_id
         row['Participant number'] = participant_number
         row['Phone no.'] = clean_phone
+        original_proficiency = str(row['English Proficiency Band'])
+        clean_proficiency = normalize_english_proficiency(original_proficiency)
+        if clean_proficiency != original_proficiency.strip():
+            changes.append({
+                'row': row_number,
+                'participant_id': participant_id,
+                'column': 'English Proficiency Band',
+                'old_value': original_proficiency,
+                'new_value': clean_proficiency,
+                'reason': 'Normalized proficiency band',
+            })
+        row['English Proficiency Band'] = clean_proficiency
         clean_rows.append(row)
 
     clean_tracker = pd.DataFrame(clean_rows)

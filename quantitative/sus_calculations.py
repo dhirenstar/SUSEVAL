@@ -139,6 +139,9 @@ def build_scored_data(
                 'survey_source': source.name,
                 'language': block.language,
                 'condition_group': participant_metadata.get(participant_id, {}).get('condition_group', ''),
+                'english_proficiency_band': participant_metadata.get(participant_id, {}).get(
+                    'english_proficiency_band', '',
+                ),
                 'language_order': block.language_order,
                 'system_raw': system_raw,
                 'system': SYSTEM_NAME_TRANSLATIONS.get(system_raw, system_raw),

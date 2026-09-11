@@ -9,6 +9,7 @@ from participant_cleaning import (
     build_participant_lookup,
     clean_participant_tracker,
     duplicate_phone_mappings,
+    normalize_english_proficiency,
     normalize_phone_detail,
 )
 from sus_calculations import build_linkage_diagnostics, build_scored_data
@@ -77,7 +78,12 @@ def run_pipeline():
     participant_ids = build_participant_lookup(clean_tracker)
     duplicate_phone_rows = duplicate_phone_mappings(clean_tracker)
     participant_metadata = {
-        row['Participant ID']: {'condition_group': row['Condition Group']}
+        row['Participant ID']: {
+            'condition_group': row['Condition Group'],
+            'english_proficiency_band': normalize_english_proficiency(
+                row['English Proficiency Band'],
+            ),
+        }
         for _, row in clean_tracker.iterrows()
         if row['Participant ID']
     }

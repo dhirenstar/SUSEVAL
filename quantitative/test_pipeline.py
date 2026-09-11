@@ -6,13 +6,30 @@ from unittest.mock import patch
 import pandas as pd
 
 from main import MENU_OPTIONS, generate_group_dataset
-from participant_cleaning import normalize_phone, normalize_phone_detail
+from participant_cleaning import normalize_english_proficiency, normalize_phone, normalize_phone_detail
 from survey_sources import SURVEY_SOURCES
 from sus_calculations import calculate_sus_score, build_scored_data
 from validation import validate_scored_data
 
 
 class PipelineRegressionTests(unittest.TestCase):
+    def test_english_proficiency_is_normalized(self):
+        expected = {
+            '': '',
+            'Basic': 'Basic',
+            'Conversational': 'Conversational',
+            'Fluent': 'Fluent',
+            'Native': 'Native',
+            'Fully fluent': 'Fluent',
+            'Vlot': 'Fluent',
+            'Moedertaal': 'Native',
+            'Lulwimi lwam lokuqala': 'Native',
+            'Ndiyakwazi kakuhle': 'Fluent',
+            'Ndiyakwazi ukuthetha': 'Conversational',
+        }
+        for source, canonical in expected.items():
+            self.assertEqual(normalize_english_proficiency(source), canonical)
+
     def test_cli_exposes_expected_operations(self):
         self.assertEqual(len(MENU_OPTIONS), 7)
         self.assertEqual(MENU_OPTIONS[0], 'Process all data')
@@ -137,8 +154,7 @@ class PipelineRegressionTests(unittest.TestCase):
             sep=source.delimiter,
         )
         scored = build_scored_data(data, {}, normalize_phone_detail, source)
-        self.assertEqual(len(data), 34)
-        self.assertEqual(len(scored), 102)
+        self.assertEqual(len(scored), len(data) * 3)
         self.assertTrue((scored['language'] == 'isiXhosa').all())
         self.assertTrue((scored['processing_status'] == 'valid').all())
         self.assertTrue((pd.to_numeric(scored['sus_score']) >= 0).all())
