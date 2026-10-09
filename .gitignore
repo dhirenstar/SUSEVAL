@@ -1,27 +1,5 @@
-# dependencies
-node_modules/
+quantitative/output/
 
-# build output
-dist/
-output/
+.venv
 
-# environment
-.env
-.env.*
-
-# logs
-npm-debug.log*
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Astro
-.astro/
-
-# Python
 __pycache__/
