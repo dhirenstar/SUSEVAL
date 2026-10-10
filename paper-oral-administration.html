@@ -1,35 +1,116 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oral administration | SUSEVAL</title><meta name="description" content="Comparing oral and written administration of the English System Usability Scale"><link rel="stylesheet" href="css/style.css"></head><body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="top"><a class="brand" href="index.html">SUSEVAL</a><nav aria-label="Main"><ul>
-<li><a href="index.html">Project overview</a></li>
-<li><a href="paper-isixhosa.html">isiXhosa SUS</a></li>
-<li><a href="paper-oral-administration.html" aria-current="page">Oral administration</a></li>
-<li><a href="paper-afrikaans.html">Afrikaans SUS</a></li>
-</ul></nav></header>
-<main id="main"><article class="t" style="margin:0 auto;padding:2rem 1.25rem">
-<h1>SUSEVAL: The Effect of Administration Modality on Usability Perceptions Measured Using the System Usability Scale</h1>
-<p class="tag">Dhiren Chetty · <a href="docs/Chetty_Oral_SUS_paper.pdf">Full paper (PDF)</a></p>
-<p>This paper asked whether reading the standard English SUS aloud, instead of showing it in writing, changes scores or how participants engage with it. It is the oral arm of <a href="index.html">SUSEVAL</a>.</p>
-<h2>Research questions</h2>
-<ul><li><strong>RQ1:</strong> How does administration mode (oral versus written) relate to SUS scores and internal consistency?</li><li><strong>RQ2:</strong> How do participants experience an interviewer during oral administration, and how does this help interpret RQ1?</li></ul>
-<h2>Background</h2>
-<p>Finstad found that non-native English speakers struggle with wording such as "cumbersome". Survey research reports mode effects: interviewers can help comprehension and focus, but may add social-desirability bias. Evidence from other instruments shows no consistent effect of reading questions aloud. The author knew of no SUS translated or validated in any South African language.</p>
-<h2>Methodology</h2>
-<ul><li><strong>Design:</strong> within-subjects, mixed methods. Each participant rated three systems in writing (Microsoft Forms) and three orally (a WhatsApp call in which the researcher read each item aloud and recorded the answer).</li><li><strong>Order:</strong> written always came first, so order and mode were confounded.</li><li><strong>Pretest:</strong> three participants. The voice-note option was dropped, and answers were given as verbal categories (Strongly Disagree to Strongly Agree) rather than numbers.</li><li><strong>Participants:</strong> 25 people (17 UCT students, five students elsewhere, two unemployed, one employed), giving 150 evaluations. Home languages: English (23), isiZulu (1), Shona (1).</li><li><strong>Analysis:</strong> paired t-test and Wilcoxon test at participant level, a linear mixed-effects model with system as a fixed effect and participant as a random intercept, Cronbach's alpha, and reflexive thematic analysis.</li></ul>
-<div class="ph" role="img" aria-label="Placeholder for procedure figure">PLACEHOLDER: Figure 1 (participant procedure) and Figure 3 (participant-level scores) from the paper</div>
-<h2>Results</h2>
-<div class="tw"><table><caption>Oral versus written administration</caption><tr><th>Measure</th><th>Written</th><th>Oral</th></tr>
-<tr><td>Mean SUS (SD)</td><td>79.0 (14.1)</td><td>77.0 (19.8)</td></tr><tr><td>Cronbach's alpha</td><td>.878</td><td>.931</td></tr></table></div>
-<ul><li>The mean difference (oral minus written) was −1.93 points (95% CI −6.61 to 2.75), t = −0.853, p = .402, dz = −0.17. The Wilcoxon test gave p = .184.</li><li>In the mixed model, oral administration was associated with a 2.49-point lower score (p = .302). System had a significant effect (p &lt; .001); Google Search scored highest and EskomSePush lowest.</li></ul>
-<h3>Participant accounts (counts as reported)</h3>
-<ul><li><strong>Affordances:</strong> written gave control to reread and take time (n = 16); oral allowed clarification (n = 12).</li><li><strong>Wording:</strong> most found the questionnaire understandable (n = 19); "cumbersome" was flagged by ten, including fluent or native English speakers.</li><li><strong>Interviewer influence:</strong> some felt it was more human and conversational (n = 5); some felt pressure or judgement (n = 4).</li><li><strong>Equivalence:</strong> most saw the modes as asking the same thing (n = 21); four said clarification changed an answer.</li></ul>
-<h2>Discussion and implications</h2>
-<p>Scores were similar and reliability was high in both modes, yet experience differed. Oral administration may be a useful alternative where participants benefit from hearing items, although it can influence answers. Some difficulty came from the SUS wording itself, not from mode or proficiency.</p>
-<h2>Limitations and conclusion</h2>
-<div class="note">Twenty-five participants, mostly fluent or native English speakers and mostly students; self-reported proficiency; fixed written-first order; unequal system allocation after non-response; and the interviewer's presence. The planned question about low-proficiency English speakers could not be addressed.</div>
-<p>The paper concludes that oral and written administration produced broadly comparable scores while differing in engagement, and calls for larger, more linguistically diverse samples.</p>
-<p><a href="paper-isixhosa.html">isiXhosa adaptation</a> · <a href="paper-afrikaans.html">Next: Afrikaans adaptation</a> · <a href="index.html">Project overview</a></p>
-</article></main>
-<footer><div><p>SUSEVAL is an Honours project by Inhle Cele, Dhiren Chetty and Yazeed Adams, Department of Computer Science, University of Cape Town. Ethics approval: Faculty of Science Research Ethics Committee, SCI/02801/2026.</p>
-<p><a href="index.html">Project overview</a> · <a href="paper-isixhosa.html">isiXhosa SUS</a> · <a href="paper-oral-administration.html">Oral administration</a> · <a href="paper-afrikaans.html">Afrikaans SUS</a></p></div></footer></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Oral administration | SUSEVAL</title>
+  <meta name="description" content="Comparing oral and written administration of the English System Usability Scale">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1e17'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%2300BF63'/%3E%3Ctext x='16' y='21' font-size='13' font-family='sans-serif' font-weight='900' text-anchor='middle' fill='%230b1e17'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="index.html">SUSEVAL</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Project overview</a></li>
+        <li><a href="paper-isixhosa.html">isiXhosa SUS</a></li>
+        <li><a href="paper-oral-administration.html" aria-current="page">Oral administration</a></li>
+        <li><a href="paper-afrikaans.html">Afrikaans SUS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="t">
+      <p class="breadcrumb"><a href="index.html">&larr; Back to overview</a></p>
+      <h1>SUSEVAL: The Effect of Administration Modality on Usability Perceptions Measured Using the System Usability Scale</h1>
+      <p class="tag">Dhiren Chetty · <a href="docs/Chetty_Oral_SUS_paper.pdf">Full paper (PDF)</a></p>
+      <p>This paper asked whether reading the standard English SUS aloud, instead of showing it in writing, changes scores or how participants engage with it. It is the oral arm of <a href="index.html">SUSEVAL</a>.</p>
+
+      <h2>Research questions</h2>
+      <ul>
+        <li><strong>RQ1:</strong> How does administration mode (oral versus written) relate to SUS scores and internal consistency?</li>
+        <li><strong>RQ2:</strong> How do participants experience an interviewer during oral administration, and how does this help interpret RQ1?</li>
+      </ul>
+
+      <h2>Background</h2>
+      <p>Finstad found that non-native English speakers struggle with wording such as "cumbersome". Survey research reports mode effects: interviewers can help comprehension and focus, but may add social-desirability bias. Evidence from other instruments shows no consistent effect of reading questions aloud. The author knew of no SUS translated or validated in any South African language.</p>
+
+      <h2>Methodology</h2>
+      <ul>
+        <li><strong>Design:</strong> within-subjects, mixed methods. Each participant rated three systems in writing (Microsoft Forms) and three orally (a WhatsApp call in which the researcher read each item aloud and recorded the answer).</li>
+        <li><strong>Order:</strong> written always came first, so order and mode were confounded.</li>
+        <li><strong>Pretest:</strong> three participants. The voice-note option was dropped, and answers were given as verbal categories (Strongly Disagree to Strongly Agree) rather than numbers.</li>
+        <li><strong>Participants:</strong> 25 people (17 UCT students, five students elsewhere, two unemployed, one employed), giving 150 evaluations. Home languages: English (23), isiZulu (1), Shona (1).</li>
+        <li><strong>Analysis:</strong> paired t-test and Wilcoxon test at participant level, a linear mixed-effects model with system as a fixed effect and participant as a random intercept, Cronbach's alpha, and reflexive thematic analysis.</li>
+      </ul>
+      <div class="ph" role="img" aria-label="Placeholder for procedure figure">
+        PLACEHOLDER: Figure 1 (participant procedure) and Figure 3 (participant-level scores) from the paper
+      </div>
+
+      <h2>Results</h2>
+      <div class="tw">
+        <table>
+          <caption>Oral versus written administration</caption>
+          <thead>
+            <tr>
+              <th>Measure</th>
+              <th>Written</th>
+              <th>Oral</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mean SUS (SD)</td>
+              <td>79.0 (14.1)</td>
+              <td>77.0 (19.8)</td>
+            </tr>
+            <tr>
+              <td>Cronbach's alpha</td>
+              <td>.878</td>
+              <td>.931</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul>
+        <li>The mean difference (oral minus written) was −1.93 points (95% CI −6.61 to 2.75), t = −0.853, p = .402, dz = −0.17. The Wilcoxon test gave p = .184.</li>
+        <li>In the mixed model, oral administration was associated with a 2.49-point lower score (p = .302). System had a significant effect (p &lt; .001); Google Search scored highest and EskomSePush lowest.</li>
+      </ul>
+
+      <h3>Participant accounts (counts as reported)</h3>
+      <ul>
+        <li><strong>Affordances:</strong> written gave control to reread and take time (n = 16); oral allowed clarification (n = 12).</li>
+        <li><strong>Wording:</strong> most found the questionnaire understandable (n = 19); "cumbersome" was flagged by ten, including fluent or native English speakers.</li>
+        <li><strong>Interviewer influence:</strong> some felt it was more human and conversational (n = 5); some felt pressure or judgement (n = 4).</li>
+        <li><strong>Equivalence:</strong> most saw the modes as asking the same thing (n = 21); four said clarification changed an answer.</li>
+      </ul>
+
+      <h2>Discussion and implications</h2>
+      <p>Scores were similar and reliability was high in both modes, yet experience differed. Oral administration may be a useful alternative where participants benefit from hearing items, although it can influence answers. Some difficulty came from the SUS wording itself, not from mode or proficiency.</p>
+
+      <h2>Limitations and conclusion</h2>
+      <div class="note">
+        <strong>Limitations.</strong> Twenty-five participants, mostly fluent or native English speakers and mostly students; self-reported proficiency; fixed written-first order; unequal system allocation after non-response; and the interviewer's presence. The planned question about low-proficiency English speakers could not be addressed.
+      </div>
+      <p>The paper concludes that oral and written administration produced broadly comparable scores while differing in engagement, and calls for larger, more linguistically diverse samples.</p>
+
+      <p>
+        <a href="paper-isixhosa.html">&larr; isiXhosa adaptation</a>
+        <a href="paper-afrikaans.html">Next: Afrikaans adaptation &rarr;</a>
+        <a href="index.html">Project overview</a>
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <div>
+      <p>SUSEVAL is an Honours project by Inhle Cele, Dhiren Chetty and Yazeed Adams, Department of Computer Science, University of Cape Town. Ethics approval: Faculty of Science Research Ethics Committee, SCI/02801/2026.</p>
+      <p><a href="index.html">Project overview</a> · <a href="paper-isixhosa.html">isiXhosa SUS</a> · <a href="paper-oral-administration.html">Oral administration</a> · <a href="paper-afrikaans.html">Afrikaans SUS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
