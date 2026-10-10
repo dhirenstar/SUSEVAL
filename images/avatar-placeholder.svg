@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Profile picture placeholder">
+  <defs>
+    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2f7f4"/>
+      <stop offset="100%" stop-color="#dde7e1"/>
+    </linearGradient>
+    <linearGradient id="silhouetteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6f857a"/>
+      <stop offset="100%" stop-color="#4d6359"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="80" cy="80" r="78" fill="url(#avatarBg)" stroke="#c2d5ca" stroke-width="2.5"/>
+  <!-- Head silhouette -->
+  <circle cx="80" cy="60" r="28" fill="url(#silhouetteGrad)"/>
+  <!-- Torso/Shoulders silhouette -->
+  <path d="M38 132 C38 102, 56 92, 80 92 C104 92, 122 102, 122 132 C122 135, 119 137, 115 137 L45 137 C41 137, 38 135, 38 132 Z" fill="url(#silhouetteGrad)"/>
+</svg>

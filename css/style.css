@@ -1184,7 +1184,7 @@ li strong {
 
 #resources {
   margin-top: 3.5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3.5rem;
 }
 
 .resource-archive-grid {
@@ -1267,6 +1267,171 @@ li strong {
   border-color: var(--brand-green);
   color: var(--brand-green-hover);
   text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   About the Researchers Section & Supervisor Statement
+   -------------------------------------------------------------------------- */
+#researchers {
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.researchers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin: 2rem 0 2.5rem;
+}
+
+.researcher-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-top: 3px solid var(--brand-green);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 1.75rem 2rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.researcher-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--border-strong);
+}
+
+.researcher-card.card-isixhosa {
+  border-top-color: var(--brand-green);
+}
+
+.researcher-card.card-oral {
+  border-top-color: var(--uct-blue);
+}
+
+.researcher-card.card-afrikaans {
+  border-top-color: var(--condition-amber);
+}
+
+.researcher-avatar-frame {
+  margin-bottom: 1.25rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border-hairline);
+  box-shadow: var(--shadow-subtle);
+  background: var(--bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.researcher-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.researcher-role-tag {
+  margin-bottom: 0.85rem;
+}
+
+.researcher-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 650;
+  color: var(--ink-primary);
+  margin: 0 0 0.35rem;
+}
+
+.researcher-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+}
+
+.researcher-affiliation {
+  font-size: 0.825rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+  margin: 0 0 1.25rem;
+}
+
+.researcher-contact {
+  font-size: 0.85rem;
+  margin: 0 0 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink-muted);
+  background: var(--bg-subtle);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-hairline);
+}
+
+.contact-label {
+  font-weight: 600;
+  color: var(--ink-secondary);
+}
+
+.researcher-email {
+  color: var(--brand-green);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+.researcher-email:hover {
+  color: var(--brand-green-hover);
+}
+
+.researcher-action {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  width: 100%;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.researcher-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.researcher-link:hover {
+  color: var(--brand-green);
+  text-decoration: none;
+}
+
+/* Supervisor Statement below Researchers Section */
+.supervisor-statement {
+  max-width: var(--width-container);
+  margin: 1.75rem auto 5rem;
+  padding: 0 2rem;
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.65;
+}
+
+#researchers .supervisor-statement {
+  padding: 0;
+  margin: 2rem 0 0;
 }
 
 /* Paper Bottom Navigation Links */
@@ -1466,6 +1631,11 @@ footer a:hover {
   .study-matrix {
     grid-template-columns: 1fr;
   }
+
+  .researchers-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1490,7 +1660,8 @@ footer a:hover {
   }
 
   main>section,
-  main>article {
+  main>article,
+  .supervisor-statement {
     padding: 0 1.25rem;
   }
 
