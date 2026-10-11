@@ -7,6 +7,9 @@
 /* --------------------------------------------------------------------------
    Design Tokens & Variables
    -------------------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
   /* Brand Colours (Derived from SUSEVAL Identity & UCT) */
   --brand-green: #008f4c;
@@ -106,7 +109,7 @@ h4 {
 }
 
 h1 {
-  font-family: var(--font-serif);
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(2rem, 3.8vw, 2.85rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -114,7 +117,7 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-serif);
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(1.5rem, 2.5vw, 1.95rem);
   font-weight: 600;
   letter-spacing: -0.015em;
